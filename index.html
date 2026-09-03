@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>群邑｜工地入口</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#121b2f;
+      --card2:#0f172a;
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --brand:#38bdf8;
+      --ok:#22c55e;
+      --warn:#f59e0b;
+      --danger:#ef4444;
+      --border:rgba(148,163,184,.18);
+      --shadow: 0 10px 25px rgba(0,0,0,.28);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(56,189,248,.22), transparent 60%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(34,197,94,.16), transparent 55%),
+                  var(--bg);
+      min-height:100vh;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{
+      max-width:720px;
+      margin:0 auto;
+      padding:18px 16px 28px;
+    }
+    header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin:8px 0 14px;
+    }
+    .title{
+      display:flex; flex-direction:column; gap:6px;
+    }
+    .title h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:.5px;
+    }
+    .title .sub{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.3;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(56,189,248,.12);
+      border:1px solid rgba(56,189,248,.25);
+      color:#cbefff;
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width:420px){
+      .grid{grid-template-columns: 1fr}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(18,27,47,.95), rgba(15,23,42,.95));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .btn{
+      display:flex;
+      gap:12px;
+      padding:14px 14px;
+      align-items:center;
+    }
+    .ico{
+      width:44px; height:44px;
+      border-radius:14px;
+      display:grid; place-items:center;
+      font-size:22px;
+      background:rgba(148,163,184,.12);
+      border:1px solid rgba(148,163,184,.20);
+      flex:0 0 auto;
+    }
+    .meta{min-width:0}
+    .meta .name{
+      font-size:16px;
+      margin:0 0 4px 0;
+      font-weight:700;
+    }
+    .meta .desc{
+      margin:0;
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.35;
+    }
+    .card:active{transform: translateY(1px)}
+    .section{
+      margin-top:14px;
+      padding:14px;
+      border-radius: var(--radius);
+      background:rgba(2,6,23,.35);
+      border:1px dashed rgba(148,163,184,.22);
+    }
+    .section h2{
+      margin:0 0 8px 0;
+      font-size:14px;
+      color:#dbeafe;
+      letter-spacing:.3px;
+    }
+    .small{
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+    }
+    .row{
+      display:flex; flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
+    .link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(148,163,184,.10);
+      border:1px solid rgba(148,163,184,.18);
+      font-size:13px;
+    }
+    .link b{font-weight:800}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>群邑｜工地入口</h1>
+        <div class="sub">
+          手機優先｜Notion 當資料庫（A 路線）<br/>
+          打卡：到場/離場 + GPS（有效範圍 100m）
+        </div>
+      </div>
+      <div class="pill" id="todayPill">載入中…</div>
+    </header>
+
+    <div class="grid">
+      <a class="card" href="YOUR_ATTENDANCE_URL" target="_blank" rel="noopener">
+        <div class="btn">
+          <div class="ico">🕘</div>
+          <div class="meta">
+            <p class="name">打卡</p>
+            <p class="desc">到場/離場 + GPS；超出 100m 需填原因</p>
+          </div>
+        </div>
+      </a>
+
+      <a class="card" href="YOUR_DAILY_REPORT_URL" target="_blank" rel="noopener">
+        <div class="btn">
+          <div class="ico">📝</div>
+          <div class="meta">
+            <p class="name">每日回報</p>
+            <p class="desc">工作內容匯聚成表；可填完成/缺失</p>
+          </div>
+        </div>
+      </a>
+
+      <a class="card" href="YOUR_DAILY_SUMMARY_URL" target="_blank" rel="noopener">
+        <div class="btn">
+          <div class="ico">🖨️</div>
+          <div class="meta">
+            <p class="name">今日彙總 / 列印</p>
+            <p class="desc">A4 直式；工作內容/完成/缺失</p>
+          </div>
+        </div>
+      </a>
+
+      <a class="card" href="YOUR_PROGRESS_URL" target="_blank" rel="noopener">
+        <div class="btn">
+          <div class="ico">📌</div>
+          <div class="meta">
+            <p class="name">進度看板</p>
+            <p class="desc">樓層＋戶別雙視角（B1~RF、A1/A2/A3/A5/A6）</p>
+          </div>
+        </div>
+      </a>
+
+      <a class="card" href="YOUR_PHOTOS_URL" target="_blank" rel="noopener">
+        <div class="btn">
+          <div class="ico">📷</div>
+          <div class="meta">
+            <p class="name">照片牆</p>
+            <p class="desc">日期/地點/樓層/工種/問題/材料</p>
+          </div>
+        </div>
+      </a>
+
+      <a class="card" href="YOUR_MATERIALS_URL" target="_blank" rel="noopener">
+        <div class="btn">
+          <div class="ico">🧰</div>
+          <div class="meta">
+            <p class="name">材料 / 零件</p>
+            <p class="desc">材料主檔 + 進出紀錄；可統計期間用量</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="section">
+      <h2>快速連結</h2>
+      <div class="small">
+        下面連結可以放：工地公告、規格文件、常用表單、供應商名單等。
+      </div>
+      <div class="row">
+        <a class="link" href="https://app.notion.com/p/3cf66bb94c5780d5be6df9cbc60ccee4" target="_blank" rel="noopener">📄 <b>規格文件</b></a>
+        <a class="link" href="YOUR_NOTICE_URL" target="_blank" rel="noopener">📣 公告</a>
+        <a class="link" href="YOUR_CONTACTS_URL" target="_blank" rel="noopener">📇 通訊錄</a>
+      </div>
+      <div class="small" style="margin-top:10px">
+        部署提醒：把本檔案放到 GitHub Pages / Cloudflare Pages，取得網址後用 Notion 的「Embed」貼上即可。
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const d = new Date();
+      const pad = n => String(n).padStart(2,'0');
+      const text = `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+      const pill = document.getElementById("todayPill");
+      pill.textContent = `今天 ${text}`;
+    })();
+  </script>
+</body>
+</html>
